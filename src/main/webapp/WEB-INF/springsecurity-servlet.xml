@@ -7,9 +7,8 @@
   --> 
   <security:intercept-url pattern="/manage_categories" access="hasRole('Role_Admin')" /> 
    <security:intercept-url pattern="/manage_products" access="hasRole('Role_Admin')" />
-    <security:intercept-url pattern="/manage_supplier" access="hasRole('Role_Admin')" />
-     <security:intercept-url pattern="/manage**"  access="hasRole('Role_Admin')" /> 
-  <security:intercept-url pattern="/myCart/**" access="hasRole('ROLE_USER')" /> 
+    <security:intercept-url pattern="/manage_suppliers" access="hasRole('Role_Admin')" />
+   <!--  <security:intercept-url pattern="/**"  access="hasRole('Role_Admin')" />   -->   <security:intercept-url pattern="/myCart/**" access="hasRole('ROLE_USER')" /> 
   <security:intercept-url pattern="/cart_checkout**" access="hasRole('ROLE_USER')" /> 
   <security:intercept-url pattern="/Admin/AdminHome**" access="hasRole('Role_Admin')" /> 
  <!--   intercept url Ending

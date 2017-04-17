@@ -52,14 +52,14 @@ p {
 
 
 
-
-
-
 <c:if test="${not empty loginMessage}">
 <a href="logout">Logout</a> <br>
 
 
 </c:if>
+
+
+
 
 
 
@@ -75,7 +75,7 @@ p {
        <li><a href="Contact">CONTACTUS</a></li>
          <li><a href="Login">LOGIN</a></li>
          <li><a href="Registration">REGISTER</a></li>
-        
+        <li><a href="logout">LOGOUT></a></li>
          <li>   
  
          </li>
@@ -89,6 +89,7 @@ p {
 
 
 </c:if>
+
 
 <c:if test="${isAdmin==false }">
 <a href="Mycart"> My Carts</a>
@@ -113,9 +114,9 @@ p {
 	<jsp:include page="index.jsp"></jsp:include>  
 </c:if>
 
-<c:if test="${isUserClickedR==true}">
+<!--<c:if test="${isUserClickedR==true}">
 <jsp:include page="Registration.jsp"></jsp:include> 
-</c:if>
+</c:if>-->
 <c:if test="${isUserClickedMycart==true}"><jsp:include page="Mycart.jsp"></jsp:include>   </c:if>
 
 

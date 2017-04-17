@@ -20,7 +20,7 @@
 <h2> <center>	Manage Categories </center> </h2>
 <hr>
 
-<form action="manage_category_add" method="post">
+<form action="manage_category_add" method="GET">
 <input type="text" name="id" placeholder="id"> 
 <input type="text" name="name"> 
 <input type="text" name="description"> 

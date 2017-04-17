@@ -16,7 +16,7 @@
 <h2> <center>Manage Product</center> </h2>
 <hr>
 
-<form action="manage_products_add" method="POST">
+<form action="manage_products_add" method="GET">
 <input type="text" name="id"> <br>
 <input type="text" name="name"><br>
 <input type="text" name="Price"><br>
@@ -29,7 +29,7 @@
 <input type="submit" value="Remove">
 
 
-<form action="UploadServlet" method="POST" enctype="multipart/form-data">
+<form action="UploadServlet" method="GET" enctype="multipart/form-data">
 <input type="file" name="file" size="50" />
 <br />
 <input type="submit" value="Upload File" />

@@ -168,7 +168,7 @@ public class SpringSecurityController {
 		
 		session.invalidate();
 		
-		ModelAndView mv = new ModelAndView("/index");
+		ModelAndView mv = new ModelAndView("/logout");
 		
 		//After logout also use should able to browse the categories and products
 		//as we invalidated the session, need to load these data again.

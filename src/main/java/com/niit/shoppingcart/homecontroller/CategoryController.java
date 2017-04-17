@@ -37,7 +37,7 @@ public class CategoryController {
 	
 	
 
-	@RequestMapping(value = "/manage_category_add",method = RequestMethod.POST)
+	@RequestMapping(value = "/manage_category_add",method = RequestMethod.GET)
 	public String addCategory(@ModelAttribute("category") Category category, Model model) {
 		log.debug(" Starting of the method addCategory");
 		log.info("id:" + category.getId());

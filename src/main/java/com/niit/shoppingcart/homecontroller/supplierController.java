@@ -24,7 +24,7 @@ public class supplierController {
 	@Autowired
 	private Supplier supplier;
 	
-	@RequestMapping(value = "/manage_supplier",method = RequestMethod.GET)
+	@RequestMapping(value = "/manage_suppliers",method = RequestMethod.GET)
 	public String listCategories(Model model) {
 		log.debug(" Starting of the method listSupplier");
 		model.addAttribute("supplier", supplier);
