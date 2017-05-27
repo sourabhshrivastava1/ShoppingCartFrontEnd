@@ -24,7 +24,7 @@ public class supplierController {
 	@Autowired
 	private Supplier supplier;
 	
-	@RequestMapping(value = "/manage_suppliers",method = RequestMethod.GET)
+	@RequestMapping(value = "/manage_supplier",method = RequestMethod.GET)
 	public String listCategories(Model model) {
 		log.debug(" Starting of the method listSupplier");
 		model.addAttribute("supplier", supplier);
@@ -37,7 +37,7 @@ public class supplierController {
 	
 	
 
-	@RequestMapping(value = "/manage_supplier_add", method = RequestMethod.POST)
+	@RequestMapping(value = "/manage_supplier_add", method = RequestMethod.GET)
 	public String addSupplier(@ModelAttribute("supplier") Supplier supplier, Model model) {
 		log.debug(" Starting of the method addSupplier");
 		log.info("id:" + supplier.getId());
@@ -54,9 +54,10 @@ public class supplierController {
 		return "forward:/manage_supplier";
 	}
 
-	@RequestMapping("manage_supplier_remove/{id}")
+	@RequestMapping("/manage_supplier_remove/{id}")
 //	public ModelAndView deleteSupplier(@PathVariable("id") String id, Model model) throws Exception {
 	public String deleteSupplier(@PathVariable("id") String id, Model model) throws Exception {
+		System.out.println("DELET INVOKED");
 		boolean flag = supplierDAO.delete(id);
 
 		String msg = "Successfully done the operation";

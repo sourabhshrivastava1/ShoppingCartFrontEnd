@@ -15,24 +15,25 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
 </head>
-<body>
+<body style="background-color:		#F0FFFF">
 <h2> <center>	Manage Categories </center> </h2>
 <hr>
 
-<form action="manage_category_add" method="post">
-<input type="text" name="id" placeholder="id"> 
-<input type="text" name="name"> 
-<input type="text" name="description"> 
+<form action="manage_category_add" method="GET"><table>
+<tr><td>ID:	</td><td><input type="text" name="id" placeholder="id"><br></td> </tr>
+<tr><td>NAME:</td><td><input type="text" name="name"> <br></td> </tr>
+<tr><td>DESCRIPTION:</td><td> <input type="text" name="description"> <br></td> </tr></table>
 <input type="submit" value="Add">
 <input type="submit" value="Edit">
 <input type="submit" value="Remove">
-</form>
+</form><br>
 	<table border="2">
 
 		<thead>
 			<tr>
-				<td>ID</td>  	<td>Name</td>	<td>Description</td> <td>Action</td>
+				<th width="80">ID</th>  	<th width="80">Name</th>	<th width="120">Description</th> <th width="120" colspan="2" > Action</th>
 		</tr>
 		</thead>
 

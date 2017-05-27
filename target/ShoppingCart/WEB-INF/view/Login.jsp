@@ -32,11 +32,11 @@
 		<div class="input-group margin-bottom-sm">
 			<span class="input-group-addon"><i
 				class="fa fa-envelope-o fa-fw"></i></span> <input class="form-control"
-				type="text" name="j_username" placeholder="User ID">
+				type="text" name="username" placeholder="User ID">
 		</div>
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-			<input class="form-control" type="password" name="j_password"
+			<input class="form-control" type="password" name="password"
 				placeholder="Password">
 		</div>
 
@@ -80,7 +80,6 @@
 			</div>
 		</div>
 	</div>-->
-
 
 
 

@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.shoppingcart.dao.CartDAO;
+import com.niit.shoppingcart.dao.MycartDAO;
 import com.niit.shoppingcart.dao.CategoryDAO;
 import com.niit.shoppingcart.dao.ProductDAO;
 import com.niit.shoppingcart.dao.SupplierDAO;
 import com.niit.shoppingcart.dao.UserDAO;
 import com.niit.shoppingcart.domain.Category;
-import com.niit.shoppingcart.domain.MyCart;
+import com.niit.shoppingcart.domain.Mycart;
 import com.niit.shoppingcart.domain.Product;
 import com.niit.shoppingcart.domain.Supplier;
 import com.niit.shoppingcart.domain.User;
@@ -34,10 +34,10 @@ public class SpringSecurityController {
 	public static Logger log = LoggerFactory.getLogger(SpringSecurityController.class);
 
 	@Autowired
-	private CartDAO cartDAO;
+	private MycartDAO mycartDAO;
 
 	@Autowired
-	private MyCart myCart;
+	private Mycart myCart;
 
 	@Autowired
 	private HttpSession session;
@@ -126,6 +126,7 @@ public class SpringSecurityController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userID = auth.getName();
 		session.setAttribute("loggedInUser", userID);
+		session.setAttribute("loginmessage","welcome:"+ userID);
        User user=userDAO.getUser(userID);
 		if (user.getRole().equals("Role_Admin")) {
 			ModelAndView mv = new ModelAndView("/Admin/AdminHome");
@@ -134,10 +135,10 @@ public class SpringSecurityController {
 
 			mv.addObject("myCart", myCart);
 			// Fetch the myCart list based on user ID
-			List<MyCart> cartList = cartDAO.list(userID);
-			mv.addObject("cartList", cartList);
-			mv.addObject("cartSize", cartList.size());
-			mv.addObject("totalAmount", cartDAO.getTotalAmount(userID));
+			List<Mycart> mycartList = mycartDAO.list();
+			mv.addObject("mycartList", mycartList);
+			mv.addObject("mycartSize", mycartList.size());
+			//mv.addObject("totalAmount", mycartDAO.getTotalAmount(userID));
 			log.debug("Ending of the method validate admin");
 			return mv;
 		} else {
@@ -147,10 +148,10 @@ public class SpringSecurityController {
 			
 			mv.addObject("myCart", myCart);
 			// Fetch the myCart list based on user ID
-			List<MyCart> cartList = cartDAO.list(userID);
-			mv.addObject("cartList", cartList);
-			mv.addObject("cartSize", cartList.size());
-			mv.addObject("totalAmount", cartDAO.getTotalAmount(userID));
+			List<Mycart> mycartList = mycartDAO.list();
+			mv.addObject("mycartList", mycartList);
+			mv.addObject("mycartSize", mycartList.size());
+			//mv.addObject("totalAmount", mycartDAO.getTotalAmount(userID));
 			log.debug("Ending of the method validate");
 			return mv;
 
@@ -159,7 +160,7 @@ public class SpringSecurityController {
 	
 	}
 	 
-	
+	/*
 	@RequestMapping("/secure_logout")
 	public ModelAndView secureLogout()
 	{
@@ -192,7 +193,7 @@ public class SpringSecurityController {
 		return mv;
 	
 	}
-
+*/
 	
 	
 	

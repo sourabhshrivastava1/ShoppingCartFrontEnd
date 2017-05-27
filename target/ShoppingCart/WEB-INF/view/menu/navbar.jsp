@@ -76,5 +76,52 @@
 </div>
 </div>
 </nav>
+
+
+<div class ="container-fluid  second_bar" style="background:#0000ff; solid; padding:20px;" >
+<div class="container">
+<div class="row">
+ <div class="col-sm-12">
+ <nav class="navbar-default">
+ 
+ <div class="navbar-header">
+ <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Tnavbar">
+ <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+ </button>
+ </div>
+ 
+  <div id="Tnavbar" class="navbar-collapse collapse">
+  <ul class="nav navbar-nav ">
+  <li><a href="index" >Electronic</a></li>
+  
+  <li><a href="AboutUs" >Mens</a></li>
+  <li> <a href="contact" >Womens</a></li>
+  
+  </ul>
+  
+  
+  
+    <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+  
+  
+  </div>
+  
+  
+  
+  
+  
+  
+ </div>
+</div>
+</div>
+</div>
 </body>
 </html>

@@ -33,19 +33,19 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox" >
     <div class="item active" >
-      <img src="courasalImage/img1.jpg" alt="" style="width:2000px; height:300px;  margin:8px;">
+      <img src="courasalImage/img1.jpg" alt="" style="width:1200px; height:300px;  margin:8px;">
     </div>
 
     <div class="item" >
-      <img src="courasalImage/img2.jpg" alt=""  style="width:2000px; height:500px;  margin:8px;">
+      <img src="courasalImage/img2.jpg" alt=""  style="width:1200px; height:500px;  margin:8px;">
     </div>
 
     <div class="item">
-      <img src="courasalImage/images.jpg" alt="" style="width:2000px; height:300px;  margin:8px;">
+      <img src="courasalImage/images.jpg" alt="" style="width:1200px; height:300px;  margin:8px;">
     </div>
 
     <div class="item">
-      <img src="courasalImage/images4.jpg" alt="" style="width:2000px; height:300px;  margin:8px;">
+      <img src="courasalImage/images4.jpg" alt="" style="width:1200px; height:300px;  margin:8px;">
     </div>
   </div>
 

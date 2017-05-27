@@ -1,8 +1,14 @@
 package com.niit.shoppingcart.homecontroller;
 
-import javax.servlet.http.HttpSession;
+import java.util.Collection;
 
+import javax.servlet.http.HttpSession;
+import java.util.List;
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.shoppingcart.dao.CategoryDAO;
+import com.niit.shoppingcart.dao.MycartDAO;
 import com.niit.shoppingcart.dao.ProductDAO;
 import com.niit.shoppingcart.dao.SupplierDAO;
 import com.niit.shoppingcart.domain.Category;
+import com.niit.shoppingcart.domain.Mycart;
 import com.niit.shoppingcart.domain.Product;
 import com.niit.shoppingcart.domain.Supplier;
 import com.niit.shoppingcart.domain.User;
@@ -20,7 +28,7 @@ import com.niit.shoppingcart.domain.User;
 @Controller
 public class homeController {
 	
-
+	org.jboss.logging.Logger log = LoggerFactory.logger(homeController.class);
 	
 	@Autowired
 	User user;
@@ -42,6 +50,13 @@ public class homeController {
 	
 	@Autowired
 	private ProductDAO productDAO;
+	
+	@Autowired
+	private MycartDAO mycartDAO;
+
+	@Autowired
+	private Mycart mycart;
+
 	
 	@Autowired
 	private HttpSession session;
@@ -110,7 +125,7 @@ public class homeController {
 	public ModelAndView showLoginPage()
 	{
 		ModelAndView mv = new ModelAndView("/index");
-		mv.addObject("msg", "  WELCOME TO HOME PAGE");
+		mv.addObject("msg", "  WELCOME TO Login PAGE");
 		mv.addObject("isUserClickedLogin","true");
 		mv.addObject("user", user);
 		return mv;
@@ -131,14 +146,14 @@ public class homeController {
 	{
 		ModelAndView mv = new ModelAndView("/Contact");
 		mv.addObject("msg", " Hey Hello Brother , WELCOME TO Contact PAGE");
-		mv.addObject("isUserClickedContact","true");
+		mv.addObject("isUserClickedContactUs","true");
 		return mv;
 	}
 	@RequestMapping("/Menu")
 	public ModelAndView showMenuPage()
 	{
 		ModelAndView mv = new ModelAndView("/index");
-		mv.addObject("msg", " Hey Hello Brother , WELCOME TO Menu PAGE");
+		mv.addObject("msg", "  Hello  , WELCOME TO Menu PAGE");
 		mv.addObject("isUserClickedMenu","true");
 		return mv;
 	}
@@ -152,86 +167,16 @@ public class homeController {
 		return mv;
 	}
 	
-/*	@RequestMapping("/validate")
-	public ModelAndView validateCredentials(@RequestParam("userID") String id,@RequestParam("password") String pwd)
-	{
 
-		
-		//Actually you have get the data from DB
-		//Tempororily  -user->niit password =niit@123
-		
-		ModelAndView mv = new ModelAndView("/index");
-		mv.addObject("isUserLoggedIn", "false");
-		if( userDAO.validate(id, pwd)==true)
-			
-		{
-			//Createntials are correct
-			mv.addObject("isUserLoggedIn", "true");
-			
-			user = userDAO.getUser(id);
-			
-			if(user.getRole().equals("Role_Admin"))
-			{   
-				mv.addObject("isAdmin", "true");
-				mv.addObject("role", "Admin");
-			}
-			else
-			{
-				mv.addObject("isAdmin", "false");
-				mv.addObject("role", "User");
-			}
-			
-			mv.addObject("successMessage", "Valid Credentials");
-			session.setAttribute("loginMessage", "Welcome :" +id);
-		}
-		else
-		{
-			mv.addObject("errorMessage", "InValid Credentials...please try again");
-		}
-		
-		return mv;
-		
-		
-	}*/
-
-/*	@RequestMapping("/validate")
-	public ModelAndView validateCredentials(@RequestParam("userID") String id, 
-			@RequestParam("password") String pwd)
-	{
-		
-		
-		//Actually you have get the data from DB
-		//Tempororily  -user->niit password =niit@123
-		
-		ModelAndView mv = new ModelAndView("/index");
-		
-		if(id.equals("niit")   && pwd.equals("niit@123"))
-		{
-			mv.addObject("successMessage", "Valid Credentials");
-			session.setAttribute("loginMessage", "Welcome :" +id);
-		}
-		else
-		{
-			mv.addObject("errorMessage", "InValid Credentials...please try again");
-		}
-		
-		return mv;
-		
-	}*/
-/*	@RequestMapping("/logout")
-	public ModelAndView showlogout()
-	{
-		ModelAndView mv = new ModelAndView("/index");
-		session.removeAttribute("loginMessage");
-		return mv;
-				
-	}*/
 	
 	@RequestMapping("/Mycart")
 	public ModelAndView showMycart()
 	{
 		ModelAndView mv = new ModelAndView("/index");
 		mv.addObject("isUserClickedMycart", "true");
+		List<Mycart> mycartList=mycartDAO.list();
+		mv.addObject("mycartList",mycartList);
+		mv.addObject("mycart",mycart);
 		return mv;
 	}
 	
@@ -245,26 +190,61 @@ public class homeController {
 		
 		return "/index";
 	}
-}
-	/*@RequestMapping(value = "/doUpload", method = RequestMethod.POST)
-	public String handleFileUpload(HttpServletRequest request,
-	        @RequestParam CommonsMultipartFile[] fileUpload) throws Exception {
-	      
-	    if (fileUpload != null && fileUpload.length > 0) {
-	        for (CommonsMultipartFile aFile : fileUpload){
-	              
-	            System.out.println("Saving file: " + aFile.getOriginalFilename());
-	             
-	            Product product = new Product();
-	            product.setName(aFile.getOriginalFilename());
-	            product.setDescription(aFile.getBytes());;
-	          
-	            productDAO.save(product);               
-	        }
-	    }
 
-	    return "Success";
-	} */ 
+	
+
+	@RequestMapping("/CheckoutPage")
+	public ModelAndView showCheckoutPage() {
+
+		log.debug("**Starting OF ***************CHECK****OUT PAGE");
+		ModelAndView mv = new ModelAndView("/CheckoutPage");
+		log.debug("**Ending  OF ***************CHECK****OUT PAGE");
+		return mv;
+	}
+
+	@RequestMapping("/EndTY")
+	public ModelAndView showlastPage()
+	{
+
+		log.debug("This is ***************lastPage");
+		
+		String loggedInUserid = (String) session.getAttribute("loggedInUserID");
+		
+		log.info("the logged in ********USER ID***********"+ loggedInUserid );
+		
+		if (loggedInUserid == null) {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			loggedInUserid = auth.getName();
+			Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>)   auth.getAuthorities();
+			authorities.contains("ROLE_USER");
+			
+		}
+		
+		log.info("the logged in ********USER ID***********"+ loggedInUserid );
+		
+		java.util.List<Mycart> mycartlist = mycartDAO.list(loggedInUserid);
+		
+		int mycartsize = mycartDAO.list(loggedInUserid).size();
+		
+		log.info("the ****SIZE IS******"+mycartsize);
+	
+		for(Mycart listall : mycartlist)
+		{
+			
+			mycart.setId(listall.getId());;
+			
+			mycartDAO.delete(mycart);
+			
+			log.info("****THE CATSIZE**** "+mycartsize);
+		}
+		
+		ModelAndView mv = new ModelAndView("EndTY");
+		
+		log.debug("This is end ************of lastpage");
+		return mv;
+	}
+
+}
 
 
 	

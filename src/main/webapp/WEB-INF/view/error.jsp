@@ -55,36 +55,34 @@ app.controller('myCtrl', function($scope, $http) {
 </script>
 
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+
+  <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">ShoppingCart</a>
+      <a class="navbar-brand" href="#">MY SHOPPING</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="aboutus">About Us</a></li>
-      <li><a href="contactus">Contact Us</a></li> 
-      
-<%
-String user=(String)session.getAttribute("user");
-if(user==null)
-{
-	out.println("<li><a href='login'>Login</a></li>");
-	   out.println("<li><a href=register>Register</a></li>"); 
-}
-%>
+      <li class="active"  style="background:none border:none; ">
+     <li> <a href="index">HOME</a></li>
+      <li><a href="AboutUs">ABOUTUS</a></li>
+       <li><a href="Contact">CONTACTUS</a></li>
+       <c:if test="${empty loginmessage}">
+         <li><a href="Login">LOGIN</a></li>
+         <li><a href="Registration">REGISTER</a></li></c:if>
+        <li> <c:if test="${not empty loginmessage}">
+<a href="logout">LOGOUT</a> <br></li>
 
-   
-      <li> <sec:authorize access="hasRole('ROLE_ADMIN')"><a href="category">Add Category</a></sec:authorize></li>
-      <li><sec:authorize access="hasRole('ROLE_ADMIN')"><a href="product?id=0">Add Product</a></sec:authorize></li>
-      <li><sec:authorize access="hasRole('ROLE_ADMIN')"><a href="supplier1">Add Supplier</a></sec:authorize></li> 
-       <li><sec:authorize access="hasRole('ROLE_ADMIN')"><a href="paymentConfirmed">payment confirmation</a></sec:authorize></li>
-      <li><sec:authorize access="hasRole('ROLE_USER')"><a href="myCart/cart">View cart</a></sec:authorize></li>
-      <li><sec:authorize access="hasRole('ROLE_USER')"><a href="logout">Logout</a></sec:authorize></li>
-      <li><sec:authorize access="hasRole('ROLE_ADMIN')"><a href="logout">Logout</a></sec:authorize></li>
+
+</c:if>
+         
+       
       
-  </ul>
-  </div>
-  </nav>
+      <li>  <c:if test="${isAdmin==false }">
+<a href="Mycart"> MyCART</a>
+</c:if></li>
+         </li>
+    </li>
+ </nav>
   <br/><br/>
   <div>
  <form method="get" action="viewproduct" class="navbar-form navbar-left">

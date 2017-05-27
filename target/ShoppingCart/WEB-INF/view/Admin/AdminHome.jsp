@@ -17,16 +17,20 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body  style="background-color:	#F0FFFF">
+
+
 <div class="container">
+
         <div class="text-Center">
         <h3> Welcome To Admin page</h3>
 
 	<!--   Add 3 links -->
+	
 
 	<a href="manage_categories"> Manage Categories </a>
 
-	<a href="manage_suppliers"> Manage Supplier </a>
+	<a href="manage_supplier"> Manage Supplier </a>
 
 	<a href="manage_products"> Manage Products </a>
 	
@@ -46,11 +50,12 @@
 	</c:if>
 	
 	
-	<c:if test="${isUserClickedSuppliers==true}">
+	<c:if test="${isUserClickedSupplier==true}">
 
 		<jsp:include page="Supplier.jsp"></jsp:include>
 
 	</c:if>
+
 
 
 

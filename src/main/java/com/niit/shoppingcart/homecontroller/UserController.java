@@ -1,4 +1,4 @@
-package com.niit.shoppingcart.homecontroller;
+     package com.niit.shoppingcart.homecontroller;
 
 import java.util.List;
 
@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.shoppingcart.dao.CartDAO;
+import com.niit.shoppingcart.dao.MycartDAO;
 import com.niit.shoppingcart.dao.CategoryDAO;
 import com.niit.shoppingcart.dao.ProductDAO;
 import com.niit.shoppingcart.dao.SupplierDAO;
 import com.niit.shoppingcart.dao.UserDAO;
 import com.niit.shoppingcart.domain.Category;
-import com.niit.shoppingcart.domain.MyCart;
+import com.niit.shoppingcart.domain.Mycart;
 import com.niit.shoppingcart.domain.Product;
 import com.niit.shoppingcart.domain.Supplier;
 import com.niit.shoppingcart.domain.User;
@@ -39,10 +39,10 @@ public class UserController {
 	private User user;
 
 	@Autowired
-	private CartDAO cartDAO;
+	private MycartDAO cartDAO;
 
 	@Autowired
-	private MyCart myCart;
+	private Mycart myCart;
 
 	@Autowired
 	private CategoryDAO categoryDAO;
@@ -141,7 +141,7 @@ public class UserController {
 								// session
 		session.setAttribute("category", category);
 		session.setAttribute("categoryList", categoryDAO.list());
-
+        session.removeAttribute("loginmessage");
 		mv.addObject("logoutMessage", "You successfully logged out");
 		mv.addObject("loggedOut", "true");
 		

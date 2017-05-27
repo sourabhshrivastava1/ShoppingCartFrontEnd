@@ -75,11 +75,13 @@ public class CategoryController {
 	}
 
 	@RequestMapping("manage_category_edit/{id}")
-	public String editCategory(@PathVariable("id") String id, Model model) {
-		// categoryDAO.saveOrUpdate(category);
+	public String editCategory(@PathVariable("id") String id, Model model)throws Exception {
+	Category	cat = categoryDAO.get(id);
+	System.out.println(id);
+
+		categoryDAO.saveOrUpdate(cat);
 		log.debug(" Starting of the method editCategory");
 
-		category = categoryDAO.get(id);
 		//model.addAttribute("category", category);
 		log.debug(" End of the method editCategory");
 		return "forward:/manage_categories";

@@ -25,7 +25,7 @@ public class AdminController {
 		
 	}
 	
-	@RequestMapping("/manage_product")
+	@RequestMapping("/manage_products")
 	public ModelAndView manageProducts()
 	{
 		System.out.println("manageProducts");
@@ -38,7 +38,7 @@ public class AdminController {
 		
 	}
 	
-	@RequestMapping("/manage_suppliers")
+	@RequestMapping("/manage_supplier")
 	public ModelAndView manageSupplier()
 	{
 		System.out.println("manageSupplier");

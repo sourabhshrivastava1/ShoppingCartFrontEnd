@@ -85,7 +85,7 @@
  
 <h2>Please fill the details</h2>
      <!--  Before comming to this page, you have to add  userDetails in ModelAndView object-->
-	<form:form action="Registration" method="post" commandName="user">
+	<form:form action="CheckOutPage" method="post" commandName="user">
 		<table>
 			<tr>
 				<td>UserID<form:label path="id">
