@@ -7,9 +7,13 @@
 <head>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="webapp/courasalImage/img1.jpg">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+document.body.style.backgroundImage = "url('resources/images/header.jpg')";
+</script>
 <style>
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
@@ -20,9 +24,19 @@
  
 </head>
 <style>
+
+
+<body  style="background-color:#ffffff;">
+
+
+
+
+<body>
+
  {
  
-    background-color:#DAA520;
+    background-color:blue;
+    
 }
 
 h1 {
@@ -35,6 +49,7 @@ p {
     font-size: 20px;
 }
 </style>
+
 </head>
 <body > 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -48,8 +63,9 @@ app.controller('myCtrl', function($scope, $http) {
 });
 </script>
 
- 
+
     <h2> <center> Shopping Cart  </center></h2>
+     <div class="text-center" style="color:black; margin:20px;">${loginmessage}</div>
  <center> ${msg}</center>
  
   <center> ${role}</center>
@@ -74,7 +90,7 @@ app.controller('myCtrl', function($scope, $http) {
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">MY SHOPPING</a>
+      <a class="navbar-brand" href="index">MY SHOPPING</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"  style="background:none border:none; ">
@@ -94,7 +110,10 @@ app.controller('myCtrl', function($scope, $http) {
       
       <li>  <c:if test="${isAdmin==false }">
 <a href="Mycart"> MyCART</a>
+
 </c:if></li>
+
+<li>
          </li>
     </li>
  </nav>
@@ -145,9 +164,7 @@ app.controller('myCtrl', function($scope, $http) {
 <jsp:include page="Contact.jsp"></jsp:include> 
 </c:if>
 
-<c:if test="${isUserClickedAboutUs==true}">
-<jsp:include page="AboutUs.jsp"></jsp:include> 
-</c:if>
+
 
 <%-- <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -177,6 +194,10 @@ app.controller('myCtrl', function($scope, $http) {
 </nav>
 
 <jsp:include page="menu/Product_menu.jsp"></jsp:include>
+
+<c:if test="${isUserClickedAboutUs==true}">
+<jsp:include page="AboutUs.jsp"></jsp:include> 
+</c:if>
 
 <jsp:include page="menu/courosel.jsp"></jsp:include>
 <c:if test="${isUserClickedMycart==true}">

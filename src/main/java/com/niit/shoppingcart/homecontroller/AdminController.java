@@ -16,7 +16,7 @@ public class AdminController {
 	public ModelAndView manageCategories()
 	{
 		System.out.println("manageCategories");
-		ModelAndView mv = new ModelAndView("/Admin/AdminHome");
+		ModelAndView mv = new ModelAndView("/index");
 		mv.addObject("isUserClickedCategories", "true");
 		
 		//get the categories from db.
@@ -29,7 +29,7 @@ public class AdminController {
 	public ModelAndView manageProducts()
 	{
 		System.out.println("manageProducts");
-		ModelAndView mv = new ModelAndView("/Admin/AdminHome");
+		ModelAndView mv = new ModelAndView("/index");
 		mv.addObject("isUserClickedProducts", "true");
 		
 		//get the categories from db.
@@ -42,7 +42,7 @@ public class AdminController {
 	public ModelAndView manageSupplier()
 	{
 		System.out.println("manageSupplier");
-		ModelAndView mv = new ModelAndView("/Admin/AdminHome");
+		ModelAndView mv = new ModelAndView("/index");
 		mv.addObject("isUserClickedSuppliers", "true");
 		
 		//get the categories from db.

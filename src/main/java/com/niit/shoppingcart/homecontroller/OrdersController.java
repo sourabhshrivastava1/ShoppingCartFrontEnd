@@ -95,7 +95,8 @@ public class OrdersController {
 	    orders.setExpirydate(expirydate);
 	    
 	      
-	      ModelAndView mv = new ModelAndView("/EndTY");
+	      ModelAndView mv = new ModelAndView("/CheckoutPage");
+	   
 	      if(ordersDAO.save(orders))
 	      {
 	    	  mv.addObject("success", "Order Confirmed");

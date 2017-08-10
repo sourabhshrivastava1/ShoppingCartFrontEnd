@@ -20,6 +20,9 @@
 <body style="background-color:		#F0FFFF">
 <h2> <center>	Manage Categories </center> </h2>
 <hr>
+<a href="index"> HOME </a>
+
+
 
 <form action="manage_category_add" method="GET"><table>
 <tr><td>ID:	</td><td><input type="text" name="id" placeholder="id"><br></td> </tr>

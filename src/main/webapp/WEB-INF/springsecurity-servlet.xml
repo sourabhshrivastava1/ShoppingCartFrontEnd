@@ -3,8 +3,17 @@
  <security:http auto-config="true">
  
 		<!-- <security:intercept-url pattern="/manage**"
-			access="hasRole('ROLE_ADMIN')" />
+			access="hasRole('Role_Admin')" />
  -->
+<!--  <security:intercept-url pattern="/manage_products"
+			access="hasRole('Role_Admin')" />
+			<security:intercept-url pattern="/manage_categories"
+			access="hasRole('Role_Admin')" />
+			
+				<security:intercept-url pattern="/manage_supplier"
+			access="hasRole('Role_Admin')" /> -->
+			
+			
 		 <security:intercept-url pattern="/myCart/**"
 			access="hasRole('ROLE_USER')" /> 
 			

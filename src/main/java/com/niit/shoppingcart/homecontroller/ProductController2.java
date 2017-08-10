@@ -139,12 +139,12 @@ public class ProductController2 {
 	}
 	
 
-	@RequestMapping("manage_product_edit/{id}")
-	public String editProduct(@PathVariable("id") String id, Model model) {
+	@RequestMapping("manage_product_edit/{name}")
+	public String editProduct(@PathVariable("name") String name, Model model) {
 		// productDAO.saveOrUpdate(product);
 		log.debug(" Starting of the method editProduct");
 
-		product = productDAO.get(id);
+		product = productDAO.get(name);
 		//model.addAttribute("product", product);
 		log.debug(" End of the method editProduct");
 		return "forward:/manage_products";
@@ -153,7 +153,7 @@ public class ProductController2 {
 	public ModelAndView viewdetails(@PathVariable("name") String name){
 		
 		log.debug(" Starting of the method deatils product");
-		ModelAndView mv =  new ModelAndView("/index");
+		ModelAndView mv =  new ModelAndView("redirect:/");
 		session.setAttribute("isProductClicked","true");
 		mv.addObject("product",  productDAO.getProductByName("name"));
 		mv.addObject("sucessMessage", "This is Product List");
@@ -163,11 +163,11 @@ public class ProductController2 {
 		
 	}
 
-	@RequestMapping("manage_Product/get/{name}")
+	@RequestMapping("manage_product/get/{name}")
 public ModelAndView viewdetail(@PathVariable("name") String name){
 		
 		log.debug(" Starting of the method deatils product");
-		ModelAndView mv =  new ModelAndView("/index");
+		ModelAndView mv =  new ModelAndView("redirect:/");
 		session.setAttribute("isProductClicked","true");
 		mv.addObject("product",  productDAO.getProductByName("name"));
 		mv.addObject("sucessMessage", "This is Product List");

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.shoppingcart.dao.CategoryDAO;
@@ -202,9 +203,16 @@ public class homeController {
 		return mv;
 	}
 
-	@RequestMapping("/EndTY")
-	public ModelAndView showlastPage()
-	{
+	@RequestMapping(value="/EndTY" ,method = RequestMethod.POST)
+	public ModelAndView showlastPage(){
+	log.debug("**Starting OF ***************Thanku**** PAGE");
+	ModelAndView mv = new ModelAndView("/EndTY");
+	log.debug("**Ending  OF ***************Thanku****PAGE");
+	return mv;
+	}
+}
+	
+	/*{
 
 		log.debug("This is ***************lastPage");
 		
@@ -243,8 +251,8 @@ public class homeController {
 		log.debug("This is end ************of lastpage");
 		return mv;
 	}
+*/
 
-}
 
 
 	

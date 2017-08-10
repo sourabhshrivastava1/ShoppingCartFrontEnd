@@ -174,43 +174,4 @@ public class UserController {
 	}
 
 }
-/*	
-	@RequestMapping(value = "/Registration", method = RequestMethod.POST)
-	public ModelAndView registerUser(@ModelAttribute User user) {
-		
-		ModelAndView mv = new ModelAndView("/index");
-		if   (userDAO.save(user)){
-			
-			user.setRole("ROLE_USER"); // all the users are end users by default
-			
-			
-			mv.addObject("successMessage", "You are successfully registered");
-		} else {
-			
-			mv.addObject("errorMessage", "User exist with this id");
-		}
-		
-		return mv;
-	}
 
-
-	//authentication-failure-forward-url="/loginError"
-	@RequestMapping(value = "/loginError", method = RequestMethod.GET)
-	public String loginError(Model model) {
-		log.debug("Starting of the method loginError");
-		model.addAttribute("errorMessage", "Invalid Credentials.  Please try again.");
-		log.debug("Ending of the method loginError");
-		return "index";
-
-	}
-//<security:access-denied-handler error-page="/accessDenied" />
-	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
-	public String accessDenied(Model model) {
-		log.debug("Starting of the method accessDenied");
-		model.addAttribute("errorMessage", "You are not authorized to access this page");
-		log.debug("Ending of the method accessDenied");
-		return "index";
-
-	}
-
-	}*/

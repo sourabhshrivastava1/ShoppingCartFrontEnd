@@ -24,6 +24,7 @@
 
         <div class="text-Center">
         <h3> Welcome To Admin page</h3>
+        <a href="index"> HOME </a>
 
 	<!--   Add 3 links -->
 	

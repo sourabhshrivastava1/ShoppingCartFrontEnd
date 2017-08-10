@@ -85,7 +85,7 @@
  
 <h2>Please fill the details</h2>
      <!--  Before comming to this page, you have to add  userDetails in ModelAndView object-->
-	<form:form action="Submit" method="get" commandName="orders">
+	<form:form action="EndTY" method="post" commandName="orders">
 		<table>
 		
 		<tr>
@@ -95,16 +95,16 @@
 
 				<td><form:input path="User_id" pattern="${CurrentUser}" required="true"
 				        placeholder ="${CurrentUser} "
-						title="id should contains 4 to 15 characters" /></td>
+						title="id should contains 1 to 15 characters" /></td>
 			</tr>
 			<tr>
 				<td>House_no<form:label path="house_no">
 						<spring:message text="house_no" />
 					</form:label></td>
 
-				<td><form:input path="house_no" pattern=".{4,15}" required="true"
+				<td><form:input path="house_no" pattern=".{2,4}" required="true"
 				        placeholder ="Enter House no"
-						title="id should contains 4 to 15 characters" /></td>
+						title="id should contains 2 to 4 characters" /></td>
 			</tr>
 			<tr>
 				<td>Street<form:label path="Street">
@@ -120,9 +120,9 @@
 						<spring:message text="City" />
 					</form:label></td>
 
-				<td><form:input type="City" path="City" pattern=".{4,15}"
+				<td><form:input type="City" path="City" pattern=".{3,15}"
 						required="true" placeholder="enter you City"
-						title="password should contains 1 to 45 characters" /></td>
+						title="password should contains 3 to 45 characters" /></td>
 			</tr>
 			<tr>
 				<td>State<form:label path="State">
@@ -146,13 +146,28 @@
 						title="Please enter country name" /></td>
 			</tr>
 			
-			<td>CardType<form:label path="Card_type">
+			<div class="panel-body">
+							<div class="form-group">
+								<div class="col-md-12">
+									<strong>Card Type:</strong>
+								</div>
+								<div class="col-md-12">
+									<select id="CreditCardType" name="CreditCardType"
+										class="form-control">
+										<option value="5">Visa</option>
+										<option value="6">MasterCard</option>
+										<option value="7">American Express</option>
+										<option value="8">Discover</option>
+									</select>
+								</div>
+							</div>
+			<%-- <td>CardType<form:label path="Card_type">
 						<spring:message text="Card_type" />
 					</form:label></td>
 
 				<td><form:input type="tel" path="Card_type" pattern="" required="true"
 						title="Please enter valid contact number" /></td>
-			</tr>
+			</tr> --%>
            <td>CardNumber<form:label path="Card_no">
 						<spring:message text="Card_no" />
 					</form:label></td>
@@ -167,14 +182,51 @@
 				<td><form:input type="tel" path="Card_cvv" pattern="" required="true"
 						title="Please enter valid Cvv number" /></td>
 			</tr>
-			
-			<td>ExpiryDate<form:label path="expirydate">
+			<div class="form-group">
+								<div class="col-md-12">
+									<strong>ExpiryDate</strong>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<select class="form-control" name="expirydate" id=" expirydate">
+										<option value="">Month</option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+										<option value="05">05</option>
+										<option value="06">06</option>
+										<option value="07">07</option>
+										<option value="08">08</option>
+										<option value="09">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<select class="form-control" name="">
+										<option value="">Year</option>
+										<option value="2015">2015</option>
+										<option value="2016">2016</option>
+										<option value="2017">2017</option>
+										<option value="2018">2018</option>
+										<option value="2019">2019</option>
+										<option value="2020">2020</option>
+										<option value="2021">2021</option>
+										<option value="2022">2022</option>
+										<option value="2023">2023</option>
+										<option value="2024">2024</option>
+										<option value="2025">2025</option>
+									</select>
+								</div>
+							</div>
+			<%-- <td>ExpiryDate<form:label path="expirydate">
 						<spring:message text="expirydate" />
 					</form:label></td>
 
 				<td><form:input type="tel" path="expirydate" pattern="" required="true"
 						title="Please enter ExpiryDate" /></td>
-			</tr>
+			</tr> --%>
 		
 			<tr>
 

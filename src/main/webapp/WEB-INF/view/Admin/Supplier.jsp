@@ -20,6 +20,11 @@
 <h2> <center>	Manage Supplier </center> </h2>
 <hr>
 
+<a href="index"> HOME </a>
+
+
+
+
 <form action="manage_supplier_add" method="GET">
 <table>
 <tr><td>ID:</td><td><input type="text" name="id" placeholder="id"> </td></tr>

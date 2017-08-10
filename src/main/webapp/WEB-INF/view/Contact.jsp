@@ -32,6 +32,7 @@
 </style>
 </head>
 <body>
+<a href="index"> Back </a>
 	<section id ="con">
 	<div id="contain">
 		<div id="row">

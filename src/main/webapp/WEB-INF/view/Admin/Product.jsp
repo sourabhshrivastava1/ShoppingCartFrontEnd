@@ -130,6 +130,7 @@
 
 </head>
 <body>
+ <a href="index"> HOME </a>
 	<h1>Add a Product</h1>
 
 	<c:url var="addAction" value="/manage_product_add?${_csrf.parameterName}=${_csrf.token}"></c:url>

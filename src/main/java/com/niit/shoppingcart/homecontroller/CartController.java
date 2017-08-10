@@ -47,7 +47,7 @@ import com.niit.shoppingcart.domain.Product;
 			log.debug("Starting of the method myCart");
 			
 			// get the logged-in user id
-			String loggedInUserid = (String) session.getAttribute("loggedInUserID");
+			String loggedInUserid = (String) session.getAttribute("loggedInUser");
 
 			if (loggedInUserid == null) {
 				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -57,7 +57,7 @@ import com.niit.shoppingcart.domain.Product;
 				
 			}
                
-			//int mycartSize = mycartDAO.list(loggedInUserid).size();
+			int mycartSize = mycartDAO.list(loggedInUserid).size();
 
 			if (mycartSize == 0) {
 				model.addAttribute("errorMessage", "You do not have any products in your Cart :Plzs LOGin to Keep Shopping");
